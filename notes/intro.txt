@@ -1,0 +1,110 @@
+Select your difficulty
+<choice>
+  - Labrynthian
+  - Twisted (default)
+  - Guided
+  <Labrynthian>
+    Prepare for the hardest possible adventure. Dungeons are larger and enemies are more common. Yet with greater challenges comes greater reward. An accomplished explorer will grow their heros to greater heights on this difficulty. Many of the unique enemies are made stronger to compensate. Some of the storylines and storyline endings are only available on this difficulty. Choose Labrynthian?
+      <choice>
+        - yes (default)
+        - no  (back)
+        <yes>
+          <end>
+        <no>
+          <back>
+  <Twisted>
+    A twisted adventure with maze like dungeons and plenty of secrets. An explorer will need use their wits, reflexes, memory, and good judgement to complete this difficulty. Choose Twisted?
+      <choice>
+        - yes (default)
+        - no  (back)
+        <yes>
+          <end>
+        <no>
+          <back>
+  <Guided>
+    When guided through this adventure, the storylines are stretched out before you. The dungeons are linear paths with few secrets or puzzles. Yet on this difficulty some of the stories always have the worst possible outcome. Choose Guided?
+      <choice>
+        - yes (default)
+        - no  (back)
+        <yes>
+          <end>
+        <no>
+          <back>
+
+/move to tutorial1
+Ah, you are awake. Good. Nod if you can hear me. (Press <ok>)
+I am afraid that you cannot stay here any longer. I wish I could shelter you, but that is impossible.
+It is a taint, a taint that I cannot ignore.
+I must cast you out.
+I am sorry.
+You do not deserve to be sent into the wild, but it must be.
+Yes: confused.
+Listen, I want you to survive. No, I insist that you survive. I have even prepared a modest training excercise. I know that this does not make up for what I am about to do to you, but it should help you. Or do you feel capable already?
+<choice>
+  - play tutorial (default)
+  - skip tutorial
+  <play tutorial>
+    <change bgm>
+    We begin. You are endowed with powerful magick. However, outside you will need to need to rely on your physical capabilities, such as your hands and arms. Next to you is a trunk. Face the trun and open it using your physical prowess.
+    (Use the arrow keys to face the trunk, then press <ok> to open it.)
+  <skip tutorial>
+    Very well. Take this before you go.
+    <+5 widgits>
+    These are widgits. You will have a use for them. Spend them wisely. Now go my child and live.
+    <end>
+    /move to green glades hill
+
+/moves to stairs
+Open the chest first.
+<1 step backwards>
+
+/opens chest
+<+5 widgits>
+These are widgits. You will have a use for them. Spend them wisely. Right past the chest are stairs. Stairs can be very physically demanding on your legs, but they help you move up and down across the surface. Go ahead and climb them. (Use the arrow keys to move around, up the stairs, and to the platform at the top.)
+
+/top of stairs
+Well done! Believe me, I am not easially impressed, but you climbed those stairs with confidence and skill.
+<scroll left>
+There are no more stairs on this platform. You will have to jump down that cliff. However, you cannot jump down any cliff. Only jump where you can see cracks, trust me on this. Also, look for a nice patch of green plants to land on. If you do not land on nice soft green plants, you could get really hurt.
+<scroll right>
+Go ahead, and good luck! (To jump down a cliff, first approach a traversable cliff, then move in the direction of the jump.)
+
+/bottom of cliff
+You did it! Now there is a passage to your right. Go on to the next room.
+
+/approaching jumps
+I do not know if you have any fear of heights, but if so, you will overcome it here. Based on how well you climbed those stairs, I am confidant that you should have no trouble leaping your way across this broken path. Follow the path, clearing the gaps as you go. I will catch you if you fall. (To jump a small gap approach the gap and move in the direction you intend to jump.)
+
+/end of broken path
+Impressive, you even got the fresh set of stairs with no trouble. Let us change focus for a minute from your physical skills to your social skills. There will be many times where you will need to rely on your diplomatic abilities. Now, I did not prepare any real people for you to practice your social skills with, but I have something prepared that should be just as good, a wooden post. Pretend that wooden post is a person. I will play the part of the wooden post. Now go socialize with the post. (Just like with the trunk, you interact with people and other object by approaching them and pressing <ok>.)
+
+/interact with post
+Hello. I am a wooden post. How do you do?
+<choice>
+  - yes (default)
+  - no  (back)
+  <yes>
+    <end>
+  <no>
+    <end>
+Me too. Hmm, an average conversation, well done. That should cover everything you need to know about interpersonal communication. Proceed to the next room.
+
+/approach gate
+Up ahead is a gate, you must open the gate in order to proceed. Watch as I now open and close the gate.
+<gate opens and closes>
+<highlight switch>
+The switch on the wall opens the gate, but the gate only stays open for a short time. You must run in order to make it through. (In order to run, hold the <run> key while moving.)
+
+/in gate
+<have player run through gate if open>
+Very good. I have one thing left to show you. This is much easier than the other tasks so do not worry.
+
+/enter empty room
+This part is a lecture. There are four elements of virtue that you must master to be a virtuous person. These elements are Items, Abilities, Gear, and Status. Yes, that covers that. (When traveling freely, you may open the menu screen at any point by pressing the <menu> button. Try it now.)
+<wait for menu button>
+<Loop>
+  To navigate the menu, use the arrow keys and <ok> to select an option, and <back> to go back. You have a weapon in your inventory. Move to the Gear submenu and equip it to your character.
+  <open menu>
+  <exit loop if weapon is equipped>
+This is the extent of what I can teach you here. The outside world is a dangerous place, but it is full of opportunity. Try not to think of your banishment as a punishment, but as the push that send you to your adventure. Now go my child, and live.
+/move to green glades hill
