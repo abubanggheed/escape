@@ -1,12 +1,12 @@
-const { Game } = require('../models/game')
-const { renderRate } = require('../util/constants')
-const values = require('./values')
+const Game = require('./models/game')
+const { renderRate } = require('./util/constants')
+const values = require('./src/values')
+const { clearAllPressed } = require('./src/commands')
 
 let game
 const mainLoop = () => {
-  
+  // clearAllPressed()
 }
-
 window.onload = () => {
   let canvas = document.createElement('canvas')
   document.body.appendChild(canvas)
