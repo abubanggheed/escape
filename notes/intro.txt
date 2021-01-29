@@ -67,7 +67,7 @@ Well done! Believe me, I am not easially impressed, but you climbed those stairs
 <scroll left>
 There are no more stairs on this platform. You will have to jump down that cliff. However, you cannot jump down any cliff. Only jump where you can see cracks, trust me on this. Also, look for a nice patch of green plants to land on. If you do not land on nice soft green plants, you could get really hurt.
 <scroll right>
-Go ahead, and good luck! (To jump down a cliff, first approach a traversable cliff, then move in the direction of the jump.)
+Go ahead, and good luck! (To jump down a cliff, first approach a traversable cliff, then move in the direction of the jump and press the <jump> key.)
 
 /bottom of cliff
 You did it! Now there is a passage to your right. Go on to the next room.

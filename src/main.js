@@ -1,4 +1,11 @@
+const { Game } = require('../models/game')
+const { renderRate } = require('../util/constants')
 const values = require('./values')
+
+let game
+const mainLoop = () => {
+  
+}
 
 window.onload = () => {
   let canvas = document.createElement('canvas')
@@ -8,5 +15,6 @@ window.onload = () => {
   canvas.height = values.canvasHeight
   values.canvas = canvas
   values.context = canvas.getContext('2d')
-  console.log(document)
+  game = new Game()
+  setInterval(mainLoop, renderRate)
 }

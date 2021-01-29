@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require('electron')
-const values = require('./values')
+const values = require('./src/values')
 
 const createWindow = () => {
   const win = new BrowserWindow({
