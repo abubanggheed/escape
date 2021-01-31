@@ -1,6 +1,6 @@
 const { ctx } = require('../src/values')
 
-function Opt (x, y, width, height, onSelect, text, font, margine, onHighlight, highlightColor) {
+function Opt (x, y, width, height, onSelect, text, margine, onHighlight, font, highlightColor) {
   this.x = x
   this.y = y
   this.w = width
@@ -16,13 +16,13 @@ function Opt (x, y, width, height, onSelect, text, font, margine, onHighlight, h
   })
   this.render = () => {
     ctx.font = this.h - 2 * this.m + 'px ' + this.font
-    ctx.fillStyle = 'white'
-    ctx.fillText(this.text, this.x + this.m, this.y + this.m, this.w - 2 * this.m)
-    ctx.fillStyle = 'black'
-    ctx.strokeText(this.text, this.x + this.m, this.y + this.m, this.w - 2 * this.m)
+    ctx.fillStyle = '#ffffff'
+    ctx.strokeStyle = 'black'
+    ctx.fillText(this.text, this.x + this.m, this.y + this.h - this.m, this.w - 2 * this.m)
+    ctx.strokeText(this.text, this.x + this.m, this.y + this.h - this.m, this.w - 2 * this.m)
   }
 }
 
-Opt.defHc = 'rbga(10, 30, 200, 0.5)'
+Opt.defHc = 'rgba(10, 30, 200, 0.5)'
 
 module.exports = Opt

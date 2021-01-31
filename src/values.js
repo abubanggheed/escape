@@ -1,6 +1,6 @@
 module.exports = {
-  windowWidth: 800,
-  windowHeight: 600,
+  windowWidth: 1000,
+  windowHeight: 750,
   canvasWidth: 800,
   canvasHeight: 600
 }

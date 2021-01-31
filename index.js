@@ -16,7 +16,7 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
-  values.window = createWindow()
+  createWindow()
 })
 
 app.on('window-all-closed', () => {
@@ -24,5 +24,5 @@ app.on('window-all-closed', () => {
 })
 
 app.on('activate', () => {
-  !BrowserWindow.getAllWindows().length && (values.window = createWindow())
+  !BrowserWindow.getAllWindows().length && (createWindow())
 })
