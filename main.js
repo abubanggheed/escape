@@ -5,6 +5,7 @@ const { clearAllPressed } = require('./src/commands')
 
 let game
 const mainLoop = () => {
+  values.ctx.restore()
   // clearAllPressed()
 }
 window.onload = () => {
@@ -14,7 +15,8 @@ window.onload = () => {
   canvas.width = values.canvasWidth
   canvas.height = values.canvasHeight
   values.canvas = canvas
-  values.context = canvas.getContext('2d')
+  values.ctx = canvas.getContext('2d')
+  values.ctx.save()
   game = new Game()
   setInterval(mainLoop, renderRate)
 }

@@ -11,7 +11,7 @@ const createWindow = () => {
   })
   win.loadFile('index.html')
   win.autoHideMenuBar = true
-  win.isResizable = false
+  win.setResizable(false)
   return win
 }
 
