@@ -13,7 +13,7 @@ const mainLoop = () => {
 }
 window.onload = () => {
   let canvas = document.createElement('canvas')
-  document.body.appendChild(canvas)
+  document.getElementById('root').appendChild(canvas)
   canvas.id = 'canvas'
   canvas.width = values.canvasWidth
   canvas.height = values.canvasHeight
@@ -21,6 +21,6 @@ window.onload = () => {
   values.ctx = canvas.getContext('2d')
   values.ctx.save()
   game = new Game()
-  game.addComponent(require('./views/main-menu')())
+  game.addComponents(...require('./views/main-menu')())
   setInterval(mainLoop, renderRate)
 }

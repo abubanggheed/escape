@@ -1,6 +1,7 @@
 const { cmds } = require('../src/commands')
 
-function Options(defaultSelected, back, opts) {
+function Options(id, defaultSelected, back, opts) {
+  this.id = id
   this.opts = opts
   this.back = back
   this.selected = defaultSelected
@@ -40,7 +41,7 @@ function Options(defaultSelected, back, opts) {
     }
   }
   this.render = () => {
-    this.opts[this.selected[0]][this.selected[1]].highlight()
+    this.opts[this.selected[0]][this.selected[1]][this.frozen ? 'hFrozen':'highlight']()
     this.opts.forEach(list => list.forEach(opt => opt.render()))
   }
 }

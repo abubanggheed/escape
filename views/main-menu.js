@@ -1,25 +1,33 @@
 const values = require('../src/values')
+const Window = require('../models/window')
 const Options = require('../models/options')
 const Opt = require('../models/opt')
 
 module.exports = () => {
+  let options
   let cbs = [
     () => console.log('Game Start!'),
-    () => console.log('game options'),
+    (opts) => {
+      opts.freeze()
+      setTimeout(opts.freeze, 2000)
+    },
     () => window.close()
   ]
-  return new Options(
-    [0, 0],
-    [0, 10],
+  options = new Options(
+    'mo', [0, 0], [0, 10],
     [
       ['start', 'options', 'quit'].map((txt, i) => new Opt(
-        values.canvasWidth * 0.425,
-        values.canvasHeight * 0.4 + 40 * i,
-        values.canvasWidth * 0.15,
-        40,
-        cbs[i],
+        0.425,
+        0.4 + 0.07 * i,
+        0.15,
+        0.07,
+        () => cbs[i](options),
         txt,
-        5
+        0.01
       ))
     ])
+  return [
+    new Window('bmm', 0.4, 0.3, 0.2, 0.4, '#707070'),
+    options
+  ]
 }
