@@ -11,24 +11,25 @@ function Opt (x, y, width, height, onSelect, text, margine, onHighlight, font, h
   this.hc = highlightColor
   this.select = onSelect
   this.highlight = onHighlight || (() => {
-    const { ctx, canvasWidth, canvasHeight } = values
+    const { game, canvasWidth, canvasHeight } = values
+    const { ctx } = game.ctx.uian
     ctx.fillStyle = this.hc || Opt.defHc
     ctx.strokeStyle = this.hc || Opt.defHc
-    ctx.fillRect(this.x * canvasWidth, this.y * canvasHeight, this.w * canvasWidth, this.h * canvasHeight)
+    ctx.fillRect(Math.floor(this.x * canvasWidth), Math.floor(this.y * canvasHeight), Math.floor(this.w * canvasWidth), Math.floor(this.h * canvasHeight))
   })
   this.hFrozen = (() => {
-    const { ctx, canvasWidth, canvasHeight } = values
+    const { game, canvasWidth, canvasHeight } = values
+    const { ctx } = game.ctx.uian
     ctx.fillStyle = Opt.fhc
     ctx.strokeStyle = Opt.fhc
-    ctx.fillRect(this.x * canvasWidth, this.y * canvasHeight, this.w * canvasWidth, this.h * canvasHeight)
+    ctx.fillRect(Math.floor(this.x * canvasWidth), Math.floor(this.y * canvasHeight), Math.floor(this.w * canvasWidth), Math.floor(this.h * canvasHeight))
   })
   this.render = () => {
-    const { ctx, canvasWidth, canvasHeight } = values
-    ctx.font = (this.h - 2 * this.m) * canvasHeight + 'px ' + this.font
-    ctx.fillStyle = '#000000'
-    ctx.strokeStyle = '#ffffff'
-    ctx.fillText(this.text, (this.x + this.m) * canvasWidth, (this.y + this.h - this.m) * canvasHeight, (this.w - 2 * this.m) * canvasWidth)
-    ctx.strokeText(this.text, (this.x + this.m) * canvasWidth, (this.y + this.h - this.m) * canvasHeight, (this.w - 2 * this.m) * canvasWidth)
+    const { game, canvasWidth, canvasHeight } = values
+    const { ctx } = game.ctx.ui
+    ctx.font = Math.floor((this.h - 2 * this.m) * canvasHeight) + 'px ' + this.font
+    ctx.fillStyle = '#ffffff'
+    ctx.fillText(this.text, Math.floor((this.x + this.m) * canvasWidth), Math.floor((this.y + this.h - this.m) * canvasHeight), Math.floor((this.w - 2 * this.m) * canvasWidth))
   }
 }
 
