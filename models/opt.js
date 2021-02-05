@@ -14,14 +14,12 @@ function Opt (x, y, width, height, onSelect, text, margine, onHighlight, font, h
     const { game, canvasWidth, canvasHeight } = values
     const { ctx } = game.ctx.uian
     ctx.fillStyle = this.hc || Opt.defHc
-    ctx.strokeStyle = this.hc || Opt.defHc
     ctx.fillRect(Math.floor(this.x * canvasWidth), Math.floor(this.y * canvasHeight), Math.floor(this.w * canvasWidth), Math.floor(this.h * canvasHeight))
   })
   this.hFrozen = (() => {
     const { game, canvasWidth, canvasHeight } = values
     const { ctx } = game.ctx.uian
     ctx.fillStyle = Opt.fhc
-    ctx.strokeStyle = Opt.fhc
     ctx.fillRect(Math.floor(this.x * canvasWidth), Math.floor(this.y * canvasHeight), Math.floor(this.w * canvasWidth), Math.floor(this.h * canvasHeight))
   })
   this.render = () => {

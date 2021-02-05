@@ -1,6 +1,7 @@
 const Window = require('../models/window')
 const Options = require('../models/options')
 const Opt = require('../models/opt')
+const StaticText = require('../models/static-text')
 
 module.exports = game => {
   let options
@@ -14,6 +15,7 @@ module.exports = game => {
       opts.freeze()
       game.addComponents(
         Window.text('cqmw'),
+        new StaticText('cqm', 0.01, 0.85, 0.99, 0.04, 'Exit Escape Darkness?'),
         Window.textOpts('cqcw'),
         new Options('cqc', [0, 1], [0, 1], [[
           new Opt(
@@ -24,7 +26,7 @@ module.exports = game => {
           new Opt(
             0.9, 0.73, 0.1, 0.07,
             () => {
-              game.removeComponents('cqmw', 'cqcw', 'cqc'),
+              game.removeComponents('cqmw', 'cqm', 'cqcw', 'cqc'),
                 opts.freeze()
             }, 'Back', 0.01
           )
