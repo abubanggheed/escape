@@ -25,9 +25,13 @@ function Opt (x, y, width, height, onSelect, text, margine, onHighlight, font, h
   this.render = () => {
     const { game, canvasWidth, canvasHeight } = values
     const { ctx } = game.ctx.ui
-    ctx.font = Math.floor((this.h - 2 * this.m) * canvasHeight) + 'px ' + this.font
-    ctx.fillStyle = '#ffffff'
-    ctx.fillText(this.text, Math.floor((this.x + this.m) * canvasWidth), Math.floor((this.y + this.h - this.m) * canvasHeight), Math.floor((this.w - 2 * this.m) * canvasWidth))
+    if (this.text && this.text.render) {
+      this.text.render()
+    } else {
+      ctx.font = Math.floor((this.h - 2 * this.m) * canvasHeight) + 'px ' + this.font
+      ctx.fillStyle = '#ffffff'
+      ctx.fillText(this.text, Math.floor((this.x + this.m) * canvasWidth), Math.floor((this.y + this.h - this.m) * canvasHeight), Math.floor((this.w - 2 * this.m) * canvasWidth))
+    }
   }
 }
 

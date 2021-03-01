@@ -1,5 +1,6 @@
 const renderRate = 100
 
 module.exports = {
-  renderRate
+  renderRate,
+  saveFileLocation: 'store/save_files'
 }

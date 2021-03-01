@@ -3,10 +3,13 @@ const Options = require('../models/options')
 const Opt = require('../models/opt')
 const StaticText = require('../models/static-text')
 
-module.exports = game => {
+const makeMainMenu = game => {
   let options
   let cbs = [
-    () => console.log('Game Start!'),
+    () => game.saves.list.length ? (
+      game.removeComponents('mo', 'mmb'),
+      require('./saves-screen')(game, makeMainMenu)
+    ) : console.log(game.saves, 'Game Start!'),
     opts => {
       opts.freeze()
       setTimeout(opts.freeze, 2000)
@@ -41,8 +44,10 @@ module.exports = game => {
         0.425, 0.4 + 0.07 * i, 0.15, 0.07, () => cbs[i](options), txt, 0.01
       ))
     ])
-  return [
+  game.addComponents(
     new Window('mmb', 0.4, 0.3, 0.2, 0.4, [80, 80, 80, 1], [80, 80, 80, 0.5]),
     options
-  ]
+  )
 }
+
+module.exports = makeMainMenu

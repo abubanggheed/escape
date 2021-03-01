@@ -11,7 +11,7 @@ const createWindow = () => {
   })
   win.loadFile('index.html')
   win.autoHideMenuBar = true
-  win.setResizable(false)
+  // win.setResizable(false)
   return win
 }
 
@@ -20,7 +20,7 @@ app.whenReady().then(() => {
 })
 
 app.on('window-all-closed', () => {
-  process.platform !== 'darwin' && app.quit()
+  app.quit()
 })
 
 app.on('activate', () => {

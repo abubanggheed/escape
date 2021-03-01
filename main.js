@@ -1,3 +1,5 @@
+const fs = require('fs');
+const { setUp } = require('./src/set-up')
 const Game = require('./models/game')
 const Context = require('./models/context')
 const { renderRate } = require('./util/constants')
@@ -25,7 +27,11 @@ window.onload = () => {
   game.ctx.tint = new Context(game, tint)
   game.ctx.ui = new Context(game, ui)
   game.ctx.uian = new Context(game, uian)
-  game.addComponents(...require('./views/main-menu')(game))
-  game.render();
-  setInterval(mainLoop, renderRate)
+  fs.readdir('./store/save_files', {}, (err, files) => {
+    err && console.error(err)
+    require('./views/main-menu')(game)
+    game.render();
+    setUp(game)
+    setInterval(mainLoop, renderRate)
+  })
 }

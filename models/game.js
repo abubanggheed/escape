@@ -5,6 +5,7 @@ function Game() {
   this.components = []
   this.scenes = []
   this.ctx = {}
+  this.saves = { list: [] }
   this.addComponents = (...newComps) => this.components.push(...newComps)
   this.removeComponents = (...targetIds) => this.components = this.components.filter(comp => !targetIds.includes(comp.id))
   this.removeFromScene = (i, ...targetIds) => this.scenes[i] = this.scenes[i].filter(comp => !targetIds.includes(comp.id))
