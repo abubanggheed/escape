@@ -9,7 +9,7 @@ const hColor = 'rgba(10, 30, 200, 0.5)'
 const createConfirmDelete = (game, fileKey, opts, onDelete) => {
   game.addComponents(
     Window.text('cdWin'),
-    new StaticText('cdMessage', 0.01, 0.85, 0.99, 0.04, 'Do you truly wish to destroy this save file?', 50),
+    new StaticText('cdMessage', 0.01, 0.85, 0.99, 0.04, 'Do you really want to destroy this save file?', 50),
     Window.textOpts('cdOptWin'),
     new Options(
       'confirmD', [0, 1], [0, 1],
@@ -54,17 +54,18 @@ function SavedGame(x, y, width, height, cName, fKey, onSelect, onDelete, text, m
   this.fKey = fKey
   this.cName = cName
   this.spawnOpts = (game, opts) => {
+    let dy = opts.dy || 0
     let newOptions = new Options(
       'cdOpts', [0, 0], [2, 0],
       [[
         new Opt(
-          this.x + this.w * 0.05, this.y + this.h * 0.7, this.w * 0.3, this.h * 0.25,
+          this.x + this.w * 0.05, this.y - dy + this.h * 0.7, this.w * 0.3, this.h * 0.25,
           () => console.log('Game Start!'),
           'continue', 0.01, undefined, undefined, 'rgba(0, 150, 0, 0.5)'
         )
       ], [
         new Opt(
-          this.x + this.w * 0.4, this.y + this.h * 0.7, this.w * 0.25, this.h * 0.25,
+          this.x + this.w * 0.4, this.y - dy + this.h * 0.7, this.w * 0.25, this.h * 0.25,
           () => {
             newOptions.freeze()
             createConfirmDelete(game, this.fKey, newOptions, onDelete)
@@ -73,7 +74,7 @@ function SavedGame(x, y, width, height, cName, fKey, onSelect, onDelete, text, m
         )
       ], [
         new Opt(
-          this.x + this.w * 0.7, this.y + this.h * 0.7, this.w * 0.25, this.h * 0.25,
+          this.x + this.w * 0.7, this.y - dy + this.h * 0.7, this.w * 0.25, this.h * 0.25,
           () => {
             game.removeComponents('cdOpts')
             opts.freeze()
@@ -84,11 +85,11 @@ function SavedGame(x, y, width, height, cName, fKey, onSelect, onDelete, text, m
     )
     game.addComponents(newOptions)
   }
-  this.render = () => {
-    let { ui, uian } = values.game.ctx
+  this.render = (dy = 0) => {
+    let { ui } = values.game.ctx
     if (ui.needsRefresh) {
       let { ctx } = ui
-      let ax = Math.floor((this.x + this.m) * values.canvasWidth), ay = Math.floor((this.y + this.m) * values.canvasHeight), aw = Math.floor((this.w - 2 * this.m) * values.canvasWidth), ah = Math.floor((this.h - 2 * this.m) * values.canvasHeight)
+      let ax = Math.floor((this.x + this.m) * values.canvasWidth), ay = Math.floor((this.y - dy + this.m) * values.canvasHeight), aw = Math.floor((this.w - 2 * this.m) * values.canvasWidth), ah = Math.floor((this.h - 2 * this.m) * values.canvasHeight)
       ctx.strokeStyle = '#ffffff'
       ctx.strokeRect(ax, ay, aw, ah)
       ctx.font = '20px Arial'

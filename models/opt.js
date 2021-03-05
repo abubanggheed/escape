@@ -10,27 +10,29 @@ function Opt (x, y, width, height, onSelect, text, margine, onHighlight, font, h
   this.font = font || 'Arial'
   this.hc = highlightColor
   this.select = onSelect
-  this.highlight = onHighlight || (() => {
+  this.highlight = onHighlight || ((dy = 0) => {
     const { game, canvasWidth, canvasHeight } = values
     const { ctx } = game.ctx.uian
     ctx.fillStyle = this.hc || Opt.defHc
-    ctx.fillRect(Math.floor(this.x * canvasWidth), Math.floor(this.y * canvasHeight), Math.floor(this.w * canvasWidth), Math.floor(this.h * canvasHeight))
+    ctx.fillRect(Math.floor(this.x * canvasWidth), Math.floor((this.y - dy) * canvasHeight), Math.floor(this.w * canvasWidth), Math.floor(this.h * canvasHeight))
   })
-  this.hFrozen = (() => {
+  this.hFrozen = (dy = 0) => {
     const { game, canvasWidth, canvasHeight } = values
     const { ctx } = game.ctx.uian
     ctx.fillStyle = Opt.fhc
-    ctx.fillRect(Math.floor(this.x * canvasWidth), Math.floor(this.y * canvasHeight), Math.floor(this.w * canvasWidth), Math.floor(this.h * canvasHeight))
-  })
-  this.render = () => {
+    ctx.fillRect(Math.floor(this.x * canvasWidth), Math.floor((this.y - dy) * canvasHeight), Math.floor(this.w * canvasWidth), Math.floor(this.h * canvasHeight))
+  }
+  this.render = (dy = 0) => {
     const { game, canvasWidth, canvasHeight } = values
-    const { ctx } = game.ctx.ui
-    if (this.text && this.text.render) {
-      this.text.render()
-    } else {
-      ctx.font = Math.floor((this.h - 2 * this.m) * canvasHeight) + 'px ' + this.font
-      ctx.fillStyle = '#ffffff'
-      ctx.fillText(this.text, Math.floor((this.x + this.m) * canvasWidth), Math.floor((this.y + this.h - this.m) * canvasHeight), Math.floor((this.w - 2 * this.m) * canvasWidth))
+    if (this.y - dy < 1 && this.y + this.h - dy > 0) {
+      const { ctx } = game.ctx.ui
+      if (this.text && this.text.render) {
+        this.text.render(dy)
+      } else {
+        ctx.font = Math.floor((this.h - 2 * this.m) * canvasHeight) + 'px ' + this.font
+        ctx.fillStyle = '#ffffff'
+        ctx.fillText(this.text, Math.floor((this.x + this.m) * canvasWidth), Math.floor((this.y - dy + this.h - this.m) * canvasHeight), Math.floor((this.w - 2 * this.m) * canvasWidth))
+      }
     }
   }
 }

@@ -7,6 +7,7 @@ function Options(id, defaultSelected, back, opts) {
   this.back = back
   this.selected = defaultSelected
   this.frozen = false
+  this.dy = 0
   this.addOpt = opt => {
     this.opts.push(opt)
   }
@@ -30,6 +31,7 @@ function Options(id, defaultSelected, back, opts) {
     this.selected[0] = (this.selected[0] - 1 + this.opts.length) % this.opts.length
     this.selected[1] = Math.min(this.selected[1], this.opts[this.selected[0]].length - 1)
   }
+  this.getOpt = () => this.opts[this.selected[0]][this.selected[1]]
   this.freeze = () => this.frozen = !this.frozen
   this.update = () => {
     if (this.frozen) return
@@ -50,8 +52,8 @@ function Options(id, defaultSelected, back, opts) {
   }
   this.render = () => {
     let { ui, uian } = values.game.ctx
-    if (uian.needsRefresh) (this.opts[this.selected[0]][this.selected[1]][this.frozen ? 'hFrozen':'highlight']())
-    if(ui.needsRefresh) this.opts.forEach(list => list.forEach(opt => opt.render()))
+    if (uian.needsRefresh) this.getOpt()[this.frozen ? 'hFrozen':'highlight'](this.dy)
+    if(ui.needsRefresh) this.opts.forEach(list => list.forEach(opt => opt.render(this.dy)))
   }
 }
 

@@ -12,7 +12,7 @@ function StaticText(id, x, y, w, h, text, cpl, font, color, textSize) {
   this.font = font || 'Arial'
   this.color = color || StaticText.dColor
   this.update = () => { }
-  this.render = () => {
+  this.render = (dy = 0) => {
     let { ui } = values.game.ctx
     if (!ui.needsRefresh) return
     let cpl = this.cpl || this.text.length
@@ -27,7 +27,7 @@ function StaticText(id, x, y, w, h, text, cpl, font, color, textSize) {
       ctx.fillText(
         this.text.substr(i, j - i),
         Math.floor(this.x * values.canvasWidth),
-        Math.floor((this.y + line * this.h) * values.canvasHeight),
+        Math.floor((this.y - dy + line * this.h) * values.canvasHeight),
         Math.floor(this.w * values.canvasWidth)
       )
       line++
