@@ -38,16 +38,18 @@ function Options(id, defaultSelected, back, opts) {
     if (cmds.back.pressed) {
       values.game.ctx.uian.tr()
       values.game.ctx.ui.tr()
+      values.game.playSfx('back')
       this.opts[this.back[0]][this.back[1]] && this.opts[this.back[0]][this.back[1]].select()
     } else if (cmds.ok.pressed) {
       values.game.ctx.uian.tr()
       values.game.ctx.ui.tr()
+      values.game.playSfx('okay')
       this.opts[this.selected[0]][this.selected[1]].select()
     } else {
-      if (cmds.down.pressed) this.next()
-      if (cmds.up.pressed) this.previous()
-      if (cmds.right.pressed) this.right()
-      if (cmds.left.pressed) this.left()
+      if (cmds.down.pressed) (values.game.playSfx('updown'), this.next())
+      if (cmds.up.pressed) (values.game.playSfx('updown'), this.previous())
+      if (cmds.right.pressed) (values.game.playSfx('leftright'), this.right())
+      if (cmds.left.pressed) (values.game.playSfx('leftright'), this.left())
     }
   }
   this.render = () => {

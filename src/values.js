@@ -5,5 +5,5 @@ module.exports = {
   canvasHeight: 600,
   windowColor: [0, 0, 200, 0.5],
   windowColor2: [100, 100, 250, 0.5],
-  windowBorderColor: '#000080'
+  windowBorderColor: '#6060FF'
 }

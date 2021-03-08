@@ -2,7 +2,7 @@ const Opt = require('../models/opt')
 const ScrollingOptions = require('../models/scrolling-options')
 const StaticText = require('../models/static-text')
 const SavedGame = require('../models/saved-game')
-const { refreshSaveFiles } = require('../src/set-up')
+const { refreshSaveFiles } = require('../src/refresh-save-files')
 
 const makeSavesScreen = (game, onBack) => {
   let savesOptions = new ScrollingOptions('loadScreen', [1, 1], [0, 0], [[
@@ -32,7 +32,7 @@ const makeSavesScreen = (game, onBack) => {
         }, '', 0.01)
       return sg
     })
-  ]], 0, 1)
+  ]], 0.05, 0.95)
   game.addComponents(
     savesOptions
   )

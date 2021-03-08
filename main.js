@@ -27,11 +27,9 @@ window.onload = () => {
   game.ctx.tint = new Context(game, tint)
   game.ctx.ui = new Context(game, ui)
   game.ctx.uian = new Context(game, uian)
-  fs.readdir('./store/save_files', {}, (err, files) => {
-    err && console.error(err)
+  setUp(game).then(() => {
     require('./views/main-menu')(game)
-    game.render();
-    setUp(game)
+    game.render()
     setInterval(mainLoop, renderRate)
-  })
+  }).catch(console.error)
 }
