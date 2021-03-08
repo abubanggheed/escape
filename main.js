@@ -27,6 +27,8 @@ window.onload = () => {
   game.ctx.tint = new Context(game, tint)
   game.ctx.ui = new Context(game, ui)
   game.ctx.uian = new Context(game, uian)
+  game.ctx.tint.ctx.fillStyle = 'rgba(200, 200, 200, 0.5)'
+  game.ctx.bg.ctx.fillRect(0, 0, values.canvasWidth, values.canvasHeight)
   setUp(game).then(() => {
     require('./views/main-menu')(game)
     game.render()

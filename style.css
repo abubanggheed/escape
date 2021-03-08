@@ -4,8 +4,8 @@ body {
 }
 
 #root {
-  width: 800px;
-  height: 600px;
+  width: 1000px;
+  height: 750px;
   margin: auto;
   position: relative;
   border: 2px solid white;
