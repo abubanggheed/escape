@@ -39,7 +39,9 @@ function Options(id, defaultSelected, back, opts) {
       values.game.ctx.uian.tr()
       values.game.ctx.ui.tr()
       values.game.playSfx('back')
-      this.opts[this.back[0]][this.back[1]] && this.opts[this.back[0]][this.back[1]].select()
+      this.back.select ? this.back.select() : (
+        this.opts[this.back[0]][this.back[1]] && this.opts[this.back[0]][this.back[1]].select()
+      )
     } else if (cmds.ok.pressed) {
       values.game.ctx.uian.tr()
       values.game.ctx.ui.tr()
@@ -54,8 +56,8 @@ function Options(id, defaultSelected, back, opts) {
   }
   this.render = () => {
     let { ui, uian } = values.game.ctx
-    if (uian.needsRefresh) this.getOpt()[this.frozen ? 'hFrozen':'highlight'](this.dy)
-    if(ui.needsRefresh) this.opts.forEach(list => list.forEach(opt => opt.render(this.dy)))
+    if (uian.needsRefresh) this.getOpt()[this.frozen ? 'hFrozen' : 'highlight'](this.dy)
+    if (ui.needsRefresh) this.opts.forEach(list => list.forEach(opt => opt.render(this.dy)))
   }
 }
 
