@@ -3,8 +3,8 @@ module.exports = function (...items) {
   this.first = items[0]
   this.last = items[items.length - 1]
   items.forEach((it, i) => {
-    it.next = it[i + 1]
-    it.prev = it[i - 1]
+    it.next = items[i + 1]
+    it.prev = items[i - 1]
   })
   this.shift = () => {
     let first = this.first

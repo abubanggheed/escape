@@ -1,7 +1,5 @@
-const renderRate = 100
-
 module.exports = {
-  renderRate,
+  renderRate: 100,
   saveFileLocation: 'store/save_files',
   sfxLocation: 'store/sounds'
 }

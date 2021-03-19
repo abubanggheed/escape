@@ -11,7 +11,10 @@ const makeSavesScreen = (game, onBack) => {
   }, 'back', 0.01)
   let savesOptions = new ScrollingOptions('loadScreen', [0, 1], back, [
     [
-      new Opt(0.3, 0.05, 0.4, 0.2, () => console.log('Game Start!'),
+      new Opt(0.3, 0.05, 0.4, 0.2, () => {
+        game.removeComponents('loadScreen')
+        require('../scenes/new-game')(game)
+      },
         new StaticText('ngm', 0.42, 0.18, 0.17, 0.1, 'New Game'), 0.01),
       ...game.saves.list.map((sav, i) => {
         let sg = new SavedGame(0.3, 0.25 + 0.2 * i, 0.4, 0.2, sav.name, sav.folder,
